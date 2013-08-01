@@ -94,6 +94,7 @@ if(isset($_GET['action'])) // En caso que se detecte una acción
                     case 'dashboard': include_once('views/dashboard.php'); break; //<!-- Dashboard Principal -->
                     case 'pwrecover': include_once('views/passwordrecover.php');  break; //<!-- Vista de RecoveryPassword -->
                     case 'invoices': include_once('views/invoices.php'); break; // Vista de Facturas
+                    case 'clients': include_once('views/clients.php'); break; // Vista de Clientes
                     default: include_once('views/dashboard.php'); break;//<!-- Dashboard Principal -->
                 }
             }

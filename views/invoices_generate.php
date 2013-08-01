@@ -10,7 +10,7 @@ if (doCheckLoginStatus())
 <blockquote>
     <p>Factura Folio <strong><?php echo $Folio;?></strong></p> <cite>Por $<?php echo $TotalFactura;?>, emitida para <?php echo $Cliente_Nombre;?> el <?php echo $FechaEmision;?></cite>
 </blockquote>
-<div class="panel panel-primary">
+<div class="panel panel-success">
     <div class="panel-heading"> <h3 class="panel-title">Factura Sellada Digitalmente </h3> </div>
     La factura ha sido firmada y emitida correctamente.<br>
     Ya puede descargarse en <a href="?view=invoices&invoiceID=<?php echo $Folio;?>&action=pdf">PDF aqui</a>.
