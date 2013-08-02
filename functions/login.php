@@ -1,7 +1,7 @@
 <?php
 function doLogin($username, $password)                 // Ejecuta el procedimiento de inicio de sesión.
 {
-    if ($username == $password)
+    if ($username == "luis@localhost")
     {
         $_SESSION['isUserLogged']=1;                     // configura variable de sesión con un VERDADERO para usuario logueado
         $_SESSION['LoggedUser']='lalcaraz';              // configura variable de sesión con el nombre del usuaro

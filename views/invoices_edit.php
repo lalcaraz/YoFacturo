@@ -10,7 +10,7 @@ $ClienteID=4;
 $TotalFactura = '0.00';
 $Cliente_Nombre = 'Diverza S.A.P.I. de C.V.';
 $FechaEmision = '31/7/2013';
-$IVA = 0;
+$IVA = 16;
 $Partidas = '1, Servicio de Consultoría, 500.00
 5, Servicio de Papelería (copias), 4.00
 3, Traslados y otros, 40.00';
@@ -38,18 +38,14 @@ $Partidas = '1, Servicio de Consultoría, 500.00
     <div class="form-group">
         <label for="FechaEmision" class="col-lg-2 control-label">Fecha de Emisión</label>
         <div class="col-lg-10">
-            <input type="text" class="form-control" id="FechaEmision" name="FechaEmision" value="31/07/2013" placeholder="Dia/Mes/Año">
+            <input type="date" class="form-control" id="FechaEmision" name="FechaEmision" value="31/07/2013" placeholder="Dia/Mes/Año">
         </div>
     </div>
     
     <div class="form-group">
-        <label for="PorcentajeIVA" class="col-lg-2 control-label">Porcentaje de IVA a aplicar</label>
+        <label for="IVA" class="col-lg-2 control-label">Porcentaje de IVA a aplicar</label>
         <div class="col-lg-10">
-            <select class="form-control" id="PorcentajeIVA" name="PorcentajeIVA">
-                <option value="0" <?php echo ($IVA == 0 ? "selected" : "");?>>0% - Alim y Medicinas</option>
-                <option value="10" <?php echo ($IVA == 10 ? "selected" : "");?>>10% - Zona Fronteriza</option>
-                <option value="16" <?php echo ($IVA == 16 ? "selected" : "");?>>16% - General</option>
-            </select>
+            <input type="text" class="form-control" id="IVA" name="IVA" title="Este valor es configurable desde las opciones de emisión de facturas." readonly value="<?php echo $IVA;?>%">
         </div>
     </div>
     
@@ -64,9 +60,7 @@ $Partidas = '1, Servicio de Consultoría, 500.00
                 <p>Ejemplo:</p>
                 <p>1, Servicio de Consultoría, 500.00<br>5, Servicio de Papelería (copias), 4.00<br>3, Traslados y otros, 40.00</p>
             </div>
-            <textarea class="form-control" rows="6" id="Partidas" name="Partidas" placeholder="Unidad, Descripción, Precio Unitario">
-<?php echo $Partidas;?>
-            </textarea>
+            <textarea class="form-control" rows="6" id="Partidas" name="Partidas" placeholder="Unidad, Descripción, Precio Unitario"><?php echo $Partidas;?></textarea>
         </div>
     </div>
     

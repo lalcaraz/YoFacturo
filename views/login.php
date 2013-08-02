@@ -28,7 +28,7 @@
                     <input type='hidden' name='login_submitted' />
                     <div class="form-group">
                       <label for="InputEmail">Correo Electrónico:</label>
-                      <input type="text" class="form-control" id="InputEmail" name="InputEmail" placeholder="Ingresa tu correo electrónico">
+                      <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Ingresa tu correo electrónico">
                     </div>
                     <div class="form-group">
                       <label for="InputPassword">Contraseña:</label>

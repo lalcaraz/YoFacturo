@@ -29,7 +29,7 @@
                     <input type='hidden' name='recovering_password' />
                     <div class="form-group">
                       <label for="InputEmail">Correo Electrónico:</label>
-                      <input type="text" class="form-control" id="InputEmail" name="InputEmail" placeholder="Ingresa tu correo electrónico">
+                      <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Ingresa tu correo electrónico">
                     </div>
                     <button type="submit" class="btn btn-default">
                         Recuperar Contraseña

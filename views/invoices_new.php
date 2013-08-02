@@ -2,6 +2,7 @@
 include_once ('functions/math.php');
 if (doCheckLoginStatus())
 {
+    $IVA=16;
 ?>
 
 <blockquote>
@@ -26,18 +27,14 @@ if (doCheckLoginStatus())
     <div class="form-group">
         <label for="FechaEmision" class="col-lg-2 control-label">Fecha de Emisión</label>
         <div class="col-lg-10">
-            <input type="text" class="form-control" id="FechaEmision" name="FechaEmision" value="<?php echo date("d").'/'.date("m").'/'.date("Y");?>" placeholder="Dia/Mes/Año">
+            <input type="date" class="form-control" id="FechaEmision" name="FechaEmision" value="<?php echo date("d").'/'.date("m").'/'.date("Y");?>" placeholder="Dia/Mes/Año">
         </div>
     </div>
     
     <div class="form-group">
-        <label for="PorcentajeIVA" class="col-lg-2 control-label">Porcentaje de IVA a aplicar</label>
+        <label for="IVA" class="col-lg-2 control-label">Porcentaje de IVA a aplicar</label>
         <div class="col-lg-10">
-            <select class="form-control" id="PorcentajeIVA" name="PorcentajeIVA">
-                <option value="0">0% - Alim y Medicinas</option>
-                <option value="10">10% - Zona Fronteriza</option>
-                <option value="16" selected>16% - General</option>
-            </select>
+            <input type="text" class="form-control" id="IVA" name="IVA" title="Este valor es configurable desde las opciones de emisión de facturas." readonly value="<?php echo $IVA;?>%">
         </div>
     </div>
     
@@ -55,14 +52,7 @@ if (doCheckLoginStatus())
             <textarea class="form-control" rows="6" id="Partidas" name="Partidas" placeholder="Unidad, Descripción, Precio Unitario"></textarea>
         </div>
     </div>
-    
-    <div class="form-group">
-        <label for="Descuento" class="col-lg-2 control-label">Descuento</label>
-        <div class="col-lg-10">
-            <input type="text" class="form-control" id="Descuento" name="Descuento" placeholder="Indique la cantidad numérica a descontar del Subtotal (ANTES del IVA) o coloque en forma de porcentaje.">
-        </div>
-    </div>
-    
+
     <div class="form-group">
         <div class="pull-right">
             <a href="?view=invoices" class="btn btn-danger">Cancelar</a>

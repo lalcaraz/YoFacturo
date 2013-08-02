@@ -47,6 +47,15 @@ if(isset($_GET['action'])) // En caso que se detecte una acción
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         
+        <?php if ( ( isset($_GET['view']) ) and ($_GET['view'] == 'dashboard') )
+            { 
+                $MejoresClientes = array ( 0 => array ('cliente' => 'Diverza',         'facturas' => 11),
+                                            1 => array ('cliente' => 'PepsiCo',         'facturas' => 2),
+                                            2 => array ('cliente' => 'General Electric','facturas' => 1),
+                                            3 => array ('cliente' => 'Nuga-Sys',        'facturas' => 9),
+                                            4 => array ('cliente' => 'FEMSA',           'facturas' => 7)
+                                            );
+        ?>
         <!-- Google Chart API -->
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script type="text/javascript">
@@ -55,11 +64,12 @@ if(isset($_GET['action'])) // En caso que se detecte una acción
           function drawChart() {
             var data = google.visualization.arrayToDataTable([
               ['Cliente', 'Facturas Emitidas'],
-              ['Diverza',     11],
-              ['PepsiCo',      2],
-              ['General Electric',  2],
-              ['Nuga-Sys', 2],
-              ['FEMSA',    7]
+            <?php
+              foreach($MejoresClientes as $MejorCliente)
+              {
+                  echo "['".$MejorCliente['cliente']."',".$MejorCliente['facturas']."],";
+              }
+            ?>
             ]);
     
             var options = {
@@ -70,8 +80,9 @@ if(isset($_GET['action'])) // En caso que se detecte una acción
             chart.draw(data, options);
           }
         </script>
+        <?php } ?>
     </head>
-    <body>
+    <body style="padding-top: 70px;">
         
         <?php include_once('views/header.php'); ?>  <!-- Menu Principal -->
 
@@ -95,6 +106,7 @@ if(isset($_GET['action'])) // En caso que se detecte una acción
                     case 'pwrecover': include_once('views/passwordrecover.php');  break; //<!-- Vista de RecoveryPassword -->
                     case 'invoices': include_once('views/invoices.php'); break; // Vista de Facturas
                     case 'clients': include_once('views/clients.php'); break; // Vista de Clientes
+                    case 'config': include_once('views/config.php'); break; // Vista de Clientes
                     default: include_once('views/dashboard.php'); break;//<!-- Dashboard Principal -->
                 }
             }

@@ -197,4 +197,9 @@ function nombreMes($numero_mes)
         default: return null;
     }
 }
+
+function doGetPercent($total, $esperado)
+{
+        return ( ($esperado*100) / $total);
+}
 ?> 
