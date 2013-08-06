@@ -13,7 +13,7 @@ if (doCheckLoginStatus())
 <div class="panel panel-success">
     <div class="panel-heading"> <h3 class="panel-title">Factura Sellada Digitalmente </h3> </div>
     La factura ha sido firmada y emitida correctamente.<br>
-    Ya puede descargarse en <a href="?view=invoices&invoiceID=<?php echo $Folio;?>&action=pdf">PDF aqui</a>.
+    Ya puede descargarse en <a href="functions/doGeneratePDFInvoice.php?invoiceID=<?php echo $Folio;?>">PDF aqui</a>.
 </div>
 
 <div class="row">

@@ -4,8 +4,8 @@
     <ul class="nav navbar-nav pull-left">
         <li><a href="?view=invoices">Facturas</a></li>
         <li><a href="?view=clients">Clientes</a></li>
-        <li><a href="?view=config">Configuración</a></li>
         <li><a href="?view=report">Reporte de Facturación</a></li>
+        <li><a href="?view=config">Configuración</a></li>
     </ul>
     <ul class="nav navbar-nav pull-right">
         <li><a href="?action=logout">Cerrar Sesión</a></li>
