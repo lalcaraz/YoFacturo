@@ -116,7 +116,12 @@ if (doCheckLoginStatus())
                                 	<span class="label label-danger" style="width:93px; float:left; height:20px;">Cancelar</span>
                                 </a>
                                 <span style="width:5px; float:left; height:20px;"> &nbsp; </span>
+                                <!-- Solo utilizar si hay espacio en el disco para guardar las facturas.
                                 <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=pdf">
+                                	<span class="label label-info" style="width:92px; float:left; height:20px;">PDF</span>
+                                </a>
+                                -->
+                                <a href="functions/doGeneratePDFInvoice.php?invoiceID=<?php echo $Factura['folio'];?>" target="_blank">
                                 	<span class="label label-info" style="width:92px; float:left; height:20px;">PDF</span>
                                 </a>
                                 <!--

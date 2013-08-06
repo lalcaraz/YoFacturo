@@ -53,7 +53,7 @@ if (doCheckLoginStatus())
                     <h1>Hola ¡<?php echo $_SESSION['LoggedUser'];?>!</h1>
                     <p><small>Al dia de hoy mas emitido <?php echo $TotalFacturasEsteMes['emitidas']." "; echo ($TotalFacturasEsteMes['total']<=1 ? "factura" : "facturas"); ?> en el mes.</small></p>
                     <p><small>Has agregado <?php  echo $TotalNuevosClientesEsteMes." "; echo ($TotalNuevosClientesEsteMes<=1 ? "nuevo cliente" : "nuevos clientes"); ?> en el mes.</small></p>
-                    <p><a class="btn btn-primary btn-mini pull-right">Generar Reporte</a></p>
+                    <p><a class="btn btn-primary btn-mini pull-right" href="?view=report&month=<?php echo intval(date("m"));?>">Reporte de Facturación</a></p>
                 </div>
             </div>
             <div class="row">
