@@ -140,9 +140,9 @@ if (doCheckLoginStatus())
                     <!-- List group -->
                     <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        Hoy es <?php echo date("d");?> de <?php echo date("M"); ?>. Faltan <?php echo (intval(cal_days_in_month(CAL_GREGORIAN, date("m"), date("Y"))) - intval(date("d")) );?> dias para cerrar el mes.
+                        Hoy es <?php echo intval(date("d"));?> de <?php echo nombreMes(date("m")); ?>. Faltan <?php echo (intval(cal_days_in_month(CAL_GREGORIAN, date("m"), date("Y"))) - intval(date("d")) );?> dias para cerrar el mes. 
                         <div class="progress progress-striped">
-                            <div class="progress-bar progress-bar-info" style="width: <?php echo intval( (intval(date("d")) * 100)/(intval(date("m"))) );?>%;"></div>
+                            <div class="progress-bar progress-bar-info" style="width: <?php echo intval( (intval(date("d")) * 100)/(intval(cal_days_in_month(CAL_GREGORIAN, date("m"), date("Y")))) );?>%;"></div>
                         </div>
                         Haz capturado <?php echo $TotalFacturasEsteMes['total']; ?> facturas de las cuales has emitido correctamente <?php echo $TotalFacturasEsteMes['emitidas']; ?> y has cancelado <?php echo $TotalFacturasEsteMes['canceladas']; ?>.
                     </li>

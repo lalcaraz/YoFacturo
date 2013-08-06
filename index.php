@@ -36,6 +36,8 @@ if(isset($_GET['action'])) // En caso que se detecte una acción
     {
         if ($_GET['action'] == 'logout') doLogout(); // Destruye la sesión
     }
+
+if (!isset($_GET['view'])) $_GET['view'] = "dashboard";
 ?>
 
 <!DOCTYPE html>
