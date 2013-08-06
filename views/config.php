@@ -30,6 +30,7 @@ if (doCheckLoginStatus())
     $Contador_Telefono="";
     
     $Usuario_Email="";
+    $Usuario_Apodo="";
 ?>
     <div class="row">
         <div class="col-lg-2"> &nbsp; </div>
@@ -244,6 +245,13 @@ if (doCheckLoginStatus())
             <div class="panel">
                 <div class="panel-heading">Información de acceso a la plataforma</div>
                 <form class="form-horizontal" method="post" enctype="multipart/form-data" action="">
+                	<div class="form-group">
+                        <label for="Apodo" class="col-lg-2 control-label">Apodo</label>
+                        <div class="col-lg-10">
+                            <input type="email" class="form-control" id="Apodo" name="Apodo" placeholder="Tu nombre alternativo, corto. Como te gustaría que te llame." onchange="document.getElementById('botonGuardar_InfoAcceso').disabled = false;" value="<?php echo $Usuario_Apodo; ?>">
+                        </div>
+                    </div>
+                    
                     <div class="form-group">
                         <label for="Sicofi" class="col-lg-2 control-label">Correo Electrónico</label>
                         <div class="col-lg-10">

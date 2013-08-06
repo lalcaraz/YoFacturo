@@ -41,7 +41,8 @@ if (doCheckLoginStatus())
                                         2 => array ("folio" => "A003", "cliente" => "PepsiCo",          "subtotal" => "6674.77"),
                                         3 => array ("folio" => "A002", "cliente" => "PepsiCo",          "subtotal" => "1238.98"),
                                         4 => array ("folio" => "A001", "cliente" => "FEMSA",            "subtotal" => "6776.12"),
-                                        );
+	                                        );
+	$Usuario_Apodo="lalcaraz";
 ?>
     <div class="row">
         <div class="col-lg-2"> &nbsp; </div>

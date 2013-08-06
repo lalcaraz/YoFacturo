@@ -4,8 +4,9 @@ function doLogin($username, $password)                 // Ejecuta el procedimien
     if ($username == "luis@localhost")
     {
         $_SESSION['isUserLogged']=1;                     // configura variable de sesión con un VERDADERO para usuario logueado
-        $_SESSION['LoggedUser']='lalcaraz';              // configura variable de sesión con el nombre del usuaro
-        setcookie('UserLogged','lalcaraz', time()+3600); //cookie con el usuario logueado, expira en una hora.
+        $Usuario_Apodo="lalcaraz";
+        $_SESSION['LoggedUser']=$Usuario_Apodo;              // configura variable de sesión con el nombre del usuaro
+        setcookie('UserLogged',$Usuario_Apodo, time()+3600); //cookie con el usuario logueado, expira en una hora.
     }
 }
 
