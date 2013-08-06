@@ -108,8 +108,8 @@ if (!isset($_GET['view'])) $_GET['view'] = "dashboard";
                     case 'pwrecover': include_once('views/passwordrecover.php');  break; //<!-- Vista de RecoveryPassword -->
                     case 'invoices': include_once('views/invoices.php'); break; // Vista de Facturas
                     case 'clients': include_once('views/clients.php'); break; // Vista de Clientes
-                    case 'config': include_once('views/config.php'); break; // Vista de Clientes
-                    case 'report': include_once('views/report.php'); break; // Vista de Clientes
+                    case 'config': include_once('views/config.php'); break; // Vista de Configuración
+                    case 'report': include_once('views/report.php'); break; // Vista de Reportes
                     default: include_once('views/dashboard.php'); break;//<!-- Dashboard Principal -->
                 }
             }
