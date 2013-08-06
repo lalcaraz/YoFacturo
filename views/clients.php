@@ -67,16 +67,26 @@ if (doCheckLoginStatus())
                         $Cliente_Estado=rand(0,1);
                     ?>
                     <tr>
-                        <td><center><?php echo $Cliente_RFC;?></center></td>
+                        <td><center><a href="?view=clients&clientID=1&action=view" style="text-decoration: none;"><?php echo $Cliente_RFC;?></a></center></td>
                         <td><center><?php echo $Cliente_Nombre;?></center></td>
                         <td><center><?php echo $Cliente_Localidad;?></center></td>
                         <td><center><?php echo ($Cliente_Estado == 0 ? "Inactivo":"Activo");?></center></td>
-                        <td><center>
-                                <a href="?view=clients&clientID=1&action=enable"><span class="label label-success">Activar</span></a>
-                                <a href="?view=clients&clientID=1&action=disable"><span class="label label-danger">Desactivar</span></a>
-                                <a href="?view=clients&clientID=1&action=edit"><span class="label label-info">Editar</span></a>
-                                <a href="?view=clients&clientID=1&action=view"><span class="label">Ver</span></a>
-                            </center>
+                        <td>
+                        	<?php 
+                        	if ($Cliente_Estado == 0) /* Cliente Inactivo*/
+                        		{?>
+	                            <a href="?view=clients&clientID=1&action=enable"><span class="label label-success" style="width:50px; float:left; height:20px;">Activar</span></a>
+	                            <span style="width:5px; float:left; height:20px;"> &nbsp; </span>
+	                            <a href="?view=clients&clientID=1&action=edit"><span class="label label-info" style="width:50px; float:left; height:20px;">Editar</span></a>
+                            <?php   
+                            	}
+                            else
+                            	{
+	                        ?>
+	                        <a href="?view=clients&clientID=1&action=disable"><span class="label label-danger" style="width:105px; float:left; height:20px;">Desactivar</span></a>
+	                        <?php
+                            	}
+                            ?>
                         </td>
                     </tr>
                     <?php

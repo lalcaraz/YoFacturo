@@ -74,7 +74,7 @@ if (doCheckLoginStatus())
                         {
                     ?>
                     <tr>
-                        <td><center><?php echo $Factura['folio'];?></center></td>
+                        <td><center><a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=view" style="text-decoration:none;"><?php echo $Factura['folio'];?></a></center></td>
                         <td><center><?php echo $Factura['cliente'];?></center></td>
                         <td><center>$<?php echo number_format((float)$Factura['subtotal'], 2, '.', '');?></center></td>
                         <td><center>$<?php echo number_format((float)$Factura['subtotal']*(intval($Fiscal_IVA)/100), 2, '.', '');?></center></td>
@@ -97,21 +97,43 @@ if (doCheckLoginStatus())
                                     {
                                         case 0: //Estado = Borrador
                                 ?>
-                                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=generate"><span class="label label-success">Emitir</span></a>
-                                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=cancel"><span class="label label-danger">Cancelar</span></a>
-                                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=edit"><span class="label label-warning">Editar</span></a>
+                                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=generate">
+                                	<span class="label label-success" style="width:60px; float:left; height:20px;">Emitir</span>
+                                </a>
+                                <span style="width:5px; float:left; height:20px;"> &nbsp; </span>
+                                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=cancel">
+                                	<span class="label label-danger" style="width:60px; float:left; height:20px;">Cancelar</span>
+                                </a>
+                                <span style="width:5px; float:left; height:20px;"> &nbsp; </span>
+                                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=edit">
+                                	<span class="label label-warning" style="width:60px; float:left; height:20px;">Editar</span>
+                                </a>
                                 <?php
                                             break;
                                         case 1: // Estado = Emitida
                                 ?>
-                                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=cancel"><span class="label label-danger">Cancelar</span></a>
-                                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=pdf"><span class="label label-info">PDF</span></a>
-                                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=view"><span class="label">Ver</span></a>
+                                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=cancel">
+                                	<span class="label label-danger" style="width:93px; float:left; height:20px;">Cancelar</span>
+                                </a>
+                                <span style="width:5px; float:left; height:20px;"> &nbsp; </span>
+                                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=pdf">
+                                	<span class="label label-info" style="width:92px; float:left; height:20px;">PDF</span>
+                                </a>
+                                <!--
+                                <span style="width:5px; float:left; height:20px;"> &nbsp; </span>
+                                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=view">
+                                	<span class="label" style="width:60px; float:left; height:20px;">Ver</span>
+                                </a>
+                                -->
                                 <?php
                                             break;
                                         case 2: // Estado = Cancelada
                                 ?>
-                                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=view"><span class="label">Ver</span></a>
+                                <!--
+                                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=view">
+                                	<span class="label" style="width:60px; float:left; height:20px;">Ver</span>
+                                </a>
+                                -->
                                 <?php
                                             break;
                                     }
