@@ -10,6 +10,15 @@ $Cliente_Ciudad='Monterrey';
 $Cliente_Estado='NL';
 $Cliente_CP='64000';
 $Cliente_Telefono='8110014102';
+
+$Fiscal_IVA=16;
+$FacturasEmitidas = array (
+                            0 => array ("folio" => "A005", "cliente" => "Diverza",          "subtotal" => "3525.8", "estado" => 0),
+                            1 => array ("folio" => "A004", "cliente" => "General Electric", "subtotal" => "4233.6", "estado" => 1),
+                            2 => array ("folio" => "A003", "cliente" => "PepsiCo",          "subtotal" => "6674.77","estado" => 2),
+                            3 => array ("folio" => "A002", "cliente" => "PepsiCo",          "subtotal" => "1238.98","estado" => 1),
+                            4 => array ("folio" => "A001", "cliente" => "FEMSA",            "subtotal" => "6776.12","estado" => 0),
+                            );
 ?>
 
 <blockquote>
@@ -81,30 +90,81 @@ $Cliente_Telefono='8110014102';
         </tr>
     </thead>
     <tbody>
-        <?php for($x=1; $x<=10; $x++)
-            {
-            $RandomNum = rand(10,$x*10);
-        ?>
-        <tr>
-            <td><center>A<?php echo ($x < 10 ? '00': '0').$x;?></center></td>
-            <td><center>Cliente Random</center></td>
-            <td><center>$<?php echo $RandomNum; ?>.00</center></td>
-            <td><center>$<?php echo $RandomNum*0.16;?></center></td>
-            <td><center>$<?php echo $RandomNum*1.16;?></center></td>
-            <td><center>Emitida</center></td>
-            <td><center>
-                    <a href="?view=invoices&invoiceID=1&action=generate"><span class="label label-success">Emitir</span></a>
-                    <a href="?view=invoices&invoiceID=1&action=cancel"><span class="label label-danger">Cancelar</span></a>
-                    <a href="?view=invoices&invoiceID=1&action=edit"><span class="label label-warning">Editar</span></a>
-                    <a href="?view=invoices&invoiceID=1&action=pdf"><span class="label label-info">PDF</span></a>
-                    <a href="?view=invoices&invoiceID=1&action=view"><span class="label">Ver</span></a>
-                </center>
-            </td>
-        </tr>
-        <?php
-            }
-        ?>
-    </tbody>
+	    <?php foreach($FacturasEmitidas as $Factura)
+	        {
+	    ?>
+	    <tr>
+	        <td><center><a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=view" style="text-decoration:none;"><?php echo $Factura['folio'];?></a></center></td>
+	        <td><center><?php echo $Factura['cliente'];?></center></td>
+	        <td><center>$<?php echo number_format((float)$Factura['subtotal'], 2, '.', '');?></center></td>
+	        <td><center>$<?php echo number_format((float)$Factura['subtotal']*(intval($Fiscal_IVA)/100), 2, '.', '');?></center></td>
+	        <td><center>$<?php echo number_format((float)$Factura['subtotal']*(number_format((float)(intval($Fiscal_IVA)/100)+1.0, 2, '.', '')), 2, '.', '');;?></center></td>
+	        <td>
+	            <center>
+	                <?php
+	                    switch($Factura['estado'])
+	                    {
+	                        case 0: echo "Borrador"; break;
+	                        case 1: echo "Emitida"; break;
+	                        case 2: echo "Cancelada"; break;
+	                    }
+	                ?>
+	            </center>
+	        </td>
+	        <td><center>
+	                <?php
+	                    switch($Factura['estado'])
+	                    {
+	                        case 0: //Estado = Borrador
+	                ?>
+	                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=generate">
+	                	<span class="label label-success" style="width:60px; float:left; height:20px;">Emitir</span>
+	                </a>
+	                <span style="width:5px; float:left; height:20px;"> &nbsp; </span>
+	                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=cancel">
+	                	<span class="label label-danger" style="width:60px; float:left; height:20px;">Cancelar</span>
+	                </a>
+	                <span style="width:5px; float:left; height:20px;"> &nbsp; </span>
+	                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=edit">
+	                	<span class="label label-warning" style="width:60px; float:left; height:20px;">Editar</span>
+	                </a>
+	                <?php
+	                            break;
+	                        case 1: // Estado = Emitida
+	                ?>
+	                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=cancel">
+	                	<span class="label label-danger" style="width:93px; float:left; height:20px;">Cancelar</span>
+	                </a>
+	                <span style="width:5px; float:left; height:20px;"> &nbsp; </span>
+	                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=pdf">
+	                	<span class="label label-info" style="width:92px; float:left; height:20px;">PDF</span>
+	                </a>
+	                <!--
+	                <span style="width:5px; float:left; height:20px;"> &nbsp; </span>
+	                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=view">
+	                	<span class="label" style="width:60px; float:left; height:20px;">Ver</span>
+	                </a>
+	                -->
+	                <?php
+	                            break;
+	                        case 2: // Estado = Cancelada
+	                ?>
+	                <!--
+	                <a href="?view=invoices&invoiceID=<?php echo $Factura['folio'];?>&action=view">
+	                	<span class="label" style="width:60px; float:left; height:20px;">Ver</span>
+	                </a>
+	                -->
+	                <?php
+	                            break;
+	                    }
+	                ?>
+	            </center>
+	        </td>
+	    </tr>
+	    <?php
+	        }
+	    ?>
+	</tbody>
 </table>
 <div>        <!-- Paginador -->
     <ul class="pager">
